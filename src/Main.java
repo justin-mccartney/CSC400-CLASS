@@ -38,7 +38,7 @@ public class Main {
         // Testing to see if the bag contains the removed item
         System.out.println("Bag contains 'eggplant': " + bag.containsItem("eggplant"));
 
-        // Testing to see the count of the removed item
+        // Testing to see the count of the removed item 'eggplant'
         System.out.println("Amount of eggplants in the bag: " + bag.count("eggplant"));
     }
 }

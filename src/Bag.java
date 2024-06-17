@@ -8,7 +8,7 @@ public class Bag<T> {
         this.map = new HashMap<>();
     }
 
-    // Adding item to the bag...
+    // Adding item to the bag
     public void add(T item) {
         map.put(item, map.getOrDefault(item, 0) + 1);
     }
