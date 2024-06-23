@@ -35,6 +35,33 @@ public class Bag<T> {
         return map.getOrDefault(item, 0);
     }
 
+    // Returns the total number of elements inside the bag, including duplicates
+    public int size() {
+        int totalSize = 0;
+        for(int count : map.values()) {
+            totalSize += count;
+        }
+
+        return totalSize;
+    }
+
+    // Merges another bag into this bag
+    public void merge(Bag<T> otherBag) {
+        for(Map.Entry<T, Integer> entry : otherBag.map.entrySet()) {
+            map.put(entry.getKey(), map.getOrDefault(entry.getKey(), 0) + entry.getValue());
+        }
+    }
+
+    // Returns a new bag that contains only the elements within the distinct bag
+    public Bag<T> distinct() {
+        Bag<T> distinctBag = new Bag<>();
+        for(T item : map.keySet()) {
+            distinctBag.add(item);
+        }
+
+        return distinctBag;
+    }
+
     // Returns the contents of the bag - in the form of a string
     @Override
     public String toString() {
