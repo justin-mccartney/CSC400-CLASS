@@ -62,8 +62,9 @@ public class Main {
         bag_two.add("Nissan");
 
         // Printing the size of each bag respectively - using size method
-        System.out.println("Size of Bag One: " + bag_one.size());
-        System.out.println("Size of Bag Two: " + bag_two.size());
+        // Printing the contents of each bag
+        System.out.println("Contents of Bag One:\n" + bag_one + "Size of Bag One: " + bag_one.size());
+        System.out.println("\nContents of Bag Two:\n" + bag_two + "Size of Bag Two: " + bag_two.size());
 
         // Merging the two bags together - using merge method
         bag_one.merge(bag_two);
