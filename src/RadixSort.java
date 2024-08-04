@@ -1,16 +1,12 @@
+import java.util.Arrays;
+
 public class RadixSort {
     // Main method for Radix Sort
     public static void radixSort(int[] array) {
-        if(array.length == 0) {
-            return;
-        }
-
-        // Finding the maximum number in order to know the number of digits
         int max = findMax(array);
-
-        // Application of counting sort
         for(int exp = 1; max / exp > 0; exp *= 10) {
-            countingSortByDigit(array, exp);
+            countingSort(array, exp);
+            System.out.println("\nAfter sorting " + exp + "'s place: " + Arrays.toString(array));
         }
     }
 
@@ -25,10 +21,11 @@ public class RadixSort {
     }
 
     // Function to counting sort the array according to the number expressed by 'exp'
-    private static void countingSortByDigit(int[] array, int exp) {
+    private static void countingSort(int[] array, int exp) {
         int n = array.length;
         int[] output = new int[n]; // The output array
-        int[] count = new int[10]; // Count array - for all digits (0-9)
+        int[] count = new int[10];
+        Arrays.fill(count, 0);
 
         // Store the count of occurrences within 'count[]'
         for(int i = 0; i < n; i++) {
@@ -55,14 +52,14 @@ public class RadixSort {
         // Example array
         int[] array = {783, 99, 472, 182, 264, 543, 356, 295, 692, 491, 94};
 
-        System.out.println("Original Array: ");
-        printArray(array);
+        // Print the original array
+        System.out.println("Original Array: " + Arrays.toString(array));
 
         // Sort the array with Radix Sort
         radixSort(array);
 
-        System.out.println("Sorted Array: ");
-        printArray(array);
+        // Print the sorted array
+        System.out.println("\nFinal Sorted Array: " + Arrays.toString(array));
     }
 
     // Util method for printing array

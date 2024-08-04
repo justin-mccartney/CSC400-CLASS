@@ -1,5 +1,51 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        // Portfolio Project Main Class
+        Scanner scanner = new Scanner(System.in);
+        Queue queue = new Queue();
+
+        // Loop to obtain inputs - information for five people
+        for(int i = 0; i < 5; i ++) {
+            System.out.println("Enter the first name of person number " + (i + 1) + ": ");
+            String firstName = scanner.nextLine();
+
+            System.out.println("Enter the lase name of person number " + (i + 1) + ": ");
+            String lastName = scanner.nextLine();
+
+            int age = 0;
+            while(true) {
+                System.out.println("Enter the age of person number " + (i + 1) + ": ");
+                String ageInput = scanner.nextLine().trim();
+                try {
+                    age = Integer.parseInt(ageInput);
+                    if(age < 0) {
+                        throw new NumberFormatException();
+                    }
+                    break;
+                } catch(NumberFormatException e) {
+                    System.out.println("Invalid input for 'age.' Please input a valid, positive integer.");
+                }
+            }   queue.add(new Person(firstName, lastName, age));
+        }
+
+        // Display queue BEFORE sorting
+        System.out.println("\nQueue before sorting: ");
+        queue.display();
+
+        // Display queue after sorting by last name
+        queue.sortByLastNameDescending();
+        System.out.println("\nQueue after sorting by last name (descending order): ");
+        queue.display();
+
+        // Display queue after sorting by age
+        queue.sortByAgeDescending();
+        System.out.println("\nQueue after sorting by age (descending order): ");
+        queue.display();
+
+        scanner.close();
+
         /* Module 1 Critical Thinking - Main()
         // Creating an instance of the bag class
         Bag<String> bag = new Bag<>();
@@ -43,7 +89,7 @@ public class Main {
         System.out.println("Amount of eggplants in the bag: " + bag.count("eggplant"));
         */
 
-        // Module 2 Critical Thinking Main()
+        /* Module 2 Critical Thinking Main()
         // Creating two new instances of bag (1 and 2)
         Bag<String> bag_one = new Bag<>();
         Bag<String> bag_two = new Bag<>();
@@ -79,5 +125,6 @@ public class Main {
         // Printing the contents of the distinct bag...
         System.out.println("\nDistinct Bag Contents:");
         System.out.println(distinctBag);
+        */
     }
 }
